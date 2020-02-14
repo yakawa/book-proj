@@ -1,0 +1,31 @@
+name: Run textlint with reviewdog
+on: [pull_request]
+
+jobs:
+  textlint:
+    name: textlint with reviewdog
+    runs-on: ubuntu-latest
+    container:
+      image: node:current-alpine
+      env:
+        LEVEL: error
+        FLAGS: ./book-*.re
+    steps:
+      - uses: actions/checkout@v1
+      - name: setup-reviewdog
+        run: |
+          mkdir -p $HOME/bin && wget -O - -q https://raw.githubusercontent.com/reviewdog/reviewdog/master/install.sh | sh -s -- -b /usr/local/bin/
+          apk --no-cache add git
+          echo ::add-path::$HOME/bin
+      - name: install-textlint
+        run: |
+          cd "$GITHUB_WORKSPACE"
+          if [ ! -f "$(npm bin)/textlint" ]; then
+            npm install
+          fi
+      - name: run-reviewdog
+        env:
+          REVIEWDOG_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          $(npm bin)/textlint -f checkstyle "${FLAGS:-'.'}" \
+           | reviewdog -f=checkstyle -name="textlint" -diff="git diff HEAD^" -reporter=github-pr-review -level="${LEVEL}"

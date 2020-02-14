@@ -1,0 +1,50 @@
+{
+    "filters": {
+        "comments": true,
+        "whitelist": {
+            "whitelistConfigPaths": [
+                "./allow.yml"
+            ]
+        }
+    },
+    "rules": {
+        "no-todo": true,
+        "preset-ja-technical-writing": {
+            "sentence-length": { max: 100 },
+            "max-comma": {max: 5},
+            "max-ten": {max: 5},
+            "max-kanji-continuous-len": { max: 6},
+            "arabic-kanji-numbers": true,
+            "no-mix-dearu-desumasu": {
+                "preferInHeader": "",
+                "preferInBody": "ですます",
+                "preferInList": "である",
+                "strict": false
+            },
+            "ja-no-mixed-period": {"periodMark": "。"},
+            "no-double-negative-ja": true,
+            "no-dropping-the-ra": true,
+            "no-doubled-conjunctive-particle-ga": true,
+            "no-doubled-conjunction": true,
+            "no-doubled-joshi": {"min_interval": 1},
+            "no-nfd": true,
+            "no-invalid-control-character": true,
+            "no-exclamation-question-mark": false,
+            "no-hankaku-kana": true,
+            "ja-no-weak-phrase": false,
+            "ja-no-successive-word": true,
+            "ja-no-abusage": true,
+            "ja-no-redundant-expression": true,
+            "ja-unnatural-alphabet": true,
+            "no-unmatched-pair": true
+        },
+        "preset-ja-spacing": true,
+        "preset-jtf-style": false,
+        "prh": {
+            "rulePaths" :["./prh-rules/WEB+DB_PRESS.yml", "./prh-rules/techbooster.yml"]
+        }
+    },
+    "plugins": [
+        "review"
+    ]
+}

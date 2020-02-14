@@ -1,0 +1,31 @@
+review_version: 4.0
+# debug: true
+
+bookname: book
+language: ja
+booktitle: Databaseを作る
+subtitle: SQL Parser 編
+aut: ["川崎　泰一"]
+prt: 有限会社 ねこのしっぽ
+date: 2020-02-29
+history: [["2020-02-29 ver1.0"]]
+pubevent_name: 技術書典8（2020年春）新刊
+rights: (C) 2020 KAWASAKI Yasukazu
+
+toclevel: 3
+secnolevel: 2
+toc: true
+direction: "ltr"
+
+cover: null
+colophon: true
+
+highlight:
+  html: "rouge"
+  latex: "listings"
+
+texstyle: ["reviewmacro"]
+texdocumentclass: ["review-jsbook", "media=print,paper=a5,cover=false"]
+
+pdfmaker:
+  colophon: true
